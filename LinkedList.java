@@ -128,6 +128,22 @@ public class LinkedList {
         node_1.value = node_2.value;
         node_2.value = temp;
     }
+    public void revert (Node currentNode, Node prevNode){
+        if (currentNode.next == null){
+            root = currentNode;
+        } else{
+            revert(currentNode.next, currentNode);
+        }
+        currentNode.next = prevNode;
+    }
+    public void revert (){
+        if (root != null && root.next !=null){
+            Node temp = root;
+            revert(root.next, root);
+            temp.next = null;
+        }
+    }
+    
     private class Node {
         public int value;
         public Node next;
